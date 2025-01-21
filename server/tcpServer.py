@@ -4,21 +4,17 @@ server = socket.socket()
 print(type(server), server)
 laddr = ('127.0.0.1', 9888) # laddr为您的TCP Server的IP地址和监听端口 
 server.bind(laddr)
-server.listen(1024) # backlog默认为5，未完成连接和完成连接
-
-print('1' * 30)
+server.listen(1024) # backlog默认为5
 
 while True:
-    # netsock是负责和客户端进程通信的座子（服务员），服务员是server端的
+    # netsock是负责和客户端进程通信的socket
     netsock, raddr = server.accept()
     print(netsock, type(netsock))
-    print(raddr, netsock.getpeername()) # 拿对端
-    print(netsock.getsockname()) # 拿laddr
-    print('2' * 30)
-    data = netsock.recv(1024) # 1024的倍数，读取缓冲区没有数据呢？
+    print(raddr, netsock.getpeername())
+    print(netsock.getsockname())
+    data = netsock.recv(1024) # 1024的倍数
     print(type(data), data)
-    print('3' * 30)
-    netsock.send(b"www.magedu.com") # bytes
+    netsock.send(b"Hello Tcp Server") # bytes
 
     netsock.close()
 server.close()

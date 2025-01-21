@@ -2,7 +2,7 @@ import socket
 
 server = socket.socket()
 print(type(server), server)
-laddr = ('127.0.0.1', 9999)
+laddr = ('127.0.0.1', 9888) # laddr为您的TCP Server的IP地址和监听端口 
 server.bind(laddr)
 server.listen(1024) # backlog默认为5，未完成连接和完成连接
 
